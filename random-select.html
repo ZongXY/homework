@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>随机选择</title>
+    <style>
+        .random-select {
+            width: 500px;
+            margin: 20px auto;
+            text-align: center;
+            font-size: 50px;
+        }
+
+        .title {
+            border: 3px solid red;
+            border-radius: 5px;
+            width: 500px;
+            height: 200px;
+            line-height: 200px;
+        }
+
+        .btns button {
+            width: 150px;
+            height: 35px;
+            font-size: 24px;
+        }
+
+        .add-wp input {
+            width: 320px;
+            height: 30px;
+        }
+
+        .add-wp button {
+            width: 150px;
+            height: 35px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="random-select">
+        <div id="titleDiv" class="title">点击开始</div>
+
+        <div class="btns">
+            <button id="startBtn">开始</button>
+            <button id="stopBtn">停止</button>
+        </div>
+
+        <div class="add-wp">
+            <input id="inputText" type="text">
+            <button id="addBtn">新增</button>
+        </div>
+    </div>
+
+
+    <script>
+        var startBtn = document.getElementById('startBtn');
+        var stopBtn = document.getElementById('stopBtn');
+        var titleDiv = document.getElementById('titleDiv');
+        var addBtn = document.getElementById('addBtn');
+
+        var arr = '故宫 长城 十三陵 十渡 圆明园 颐和园'.split(' ');
+        var index;
+        var timer;
+
+        startBtn.onclick = function() {
+            startBtn.disabled = 'disabled';
+
+            // if(timer) {
+            //     return;
+            // }
+        
+            timer = setInterval(function() {
+                // console.log(arr)
+                var len = arr.length;
+                index = Math.floor(Math.random() * len);
+                // console.log(arr[index]);
+                titleDiv.innerHTML = arr[index];
+            }, 100)
+            
+        }
+
+        stopBtn.onclick = function() {
+            clearInterval(timer);
+
+            // timer = undefined;
+            startBtn.disabled = '';
+        }
+
+        addBtn.onclick = function() {
+
+            var input = this.parentNode.getElementsByTagName('input')[0],
+                val = input.value;
+
+                if(val) {
+                    arr = arr.concat(val.split('|'));
+                    input.value = '';
+                }
+
+            /*var val = this.parentNode.getElementsByTagName('input')[0].value;
+            this.parentNode.getElementsByTagName('input')[0].value = '';
+
+            arr = arr.concat(val.split('|'));  //要给arr再赋一次值，才能得到两个数组的连接
+            
+            // arr.push(val.split('|').join(' '));
+            console.log(arr);*/
+        }
+    </script>
+</body>
+</html>
