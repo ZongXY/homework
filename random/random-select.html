@@ -92,10 +92,45 @@
             var input = this.parentNode.getElementsByTagName('input')[0],
                 val = input.value;
 
-                if(val) {
-                    arr = arr.concat(val.split('|'));
-                    input.value = '';
+                // if(val) {
+                //     arr = arr.concat(val.split('|'));
+                //     input.value = '';
+                // }
+            /*var len = arr.length;
+            
+            for(var i=0; i<len; i++) {
+
+               if(!inArry(val,arr)) {
+                    if(val) {
+                        arr = arr.concat(val.split('|'));
+                    }
                 }
+
+                console.log(arr)
+                input.value = '';
+
+                return arr; 
+            }*/
+            
+            var i, intArray = val.split('|'), len = intArray.length; 
+            input.value = '';
+
+            for(i=0; i<len; i++) {
+
+                if(inArry(intArray[i], arr)) {
+                    alert(intArray[i] + '已存在，不添加');
+                    // input.value = '';
+
+                } else if(intArray[i]) {
+
+                    alert(intArray[i] + '不存在，添加');
+                    arr.push(intArray[i]);
+                    console.log(arr);
+                    // input.value = '';
+                }
+                // input.value = '';
+                // return arr;
+            }
 
             /*var val = this.parentNode.getElementsByTagName('input')[0].value;
             this.parentNode.getElementsByTagName('input')[0].value = '';
@@ -105,6 +140,19 @@
             // arr.push(val.split('|').join(' '));
             console.log(arr);*/
         }
+
+        function inArry(item, arr) {
+            var len = arr.length;
+            for(var i=0; i<len; i++ ){
+                if(arr[i] == item) {
+                    return true;
+                }
+                // console.log(arr[i]);
+            }
+
+            return false;
+        }
+
     </script>
 </body>
 </html>

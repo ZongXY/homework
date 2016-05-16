@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JS实现tab</title>
+    <style>
+        .tab {
+            width: 400px;
+            height: 200px;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+
+        ul,li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .tab-header {
+           overflow: hidden;
+        }
+
+        .tab-header li{
+            float: left;
+            margin-right: 10px;
+            background-color: green;
+            width: 90px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 18px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .tab-header .active {
+            background-color: #03A9F4;
+        }
+
+        .tab-body>div {
+            height: 170px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <ul id="tabHeader" class="tab-header">
+            <li class="active">tab1</li>
+            <li>tab2</li>
+            <li>tab3</li>
+            <li>tab4</li>
+        </ul>
+
+        <div id="tabBody" class="tab-body">
+            <div>div1</div>
+            <div>div2</div>
+            <div>div3</div>
+            <div>div4</div>
+        </div>
+    </div>
+
+    <script src="../lib/lib.js"></script>
+    <script>
+        var initTab = function() {
+            var tabHeader = $('tabHeader'),
+                tabBody = $('tabBody'),
+                lis = tabHeader.getElementsByTagName('li'),
+                divs = tabBody.children,
+                i,
+                j,
+                len = lis.length;
+
+            for(i=0; i<len; i++) {
+                lis[i].setAttribute('index', i);  //给li设置自定义属性
+
+                lis[i].onclick = function() {
+                    var index = this.getAttribute('index');
+                    // console.log(index);
+                    
+                    for(j=0; j<len; j++) {
+                        lis[j].removeAttribute('class');
+                        divs[j].style.display = 'none';
+                    }
+                    this.className = 'active';
+                    divs[index].style.display = 'block';
+                }
+
+            }
+        };
+
+        initTab();
+    </script>
+</body>
+</html>
