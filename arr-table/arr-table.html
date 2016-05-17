@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>数组动态渲染表格</title>
+
+    <script src="../underscore-min.js"></script>
+</head>
+<body>
+    
+    <table id="table" border="1">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>地址</th>
+            </tr>
+        </thead>
+        
+        <tbody id="tbody">
+           
+        </tbody>
+    </table>
+        
+    <script id="trTpl" type="text/tmplate">
+         <tr>
+            <td><%=name%></td>
+            <td><%=age%></td>
+            <td><%=gender%></td>
+            <td><%=address%></td>
+           
+        </tr>
+    </script>
+
+    <script>
+        var arr = [
+            {
+                name: 'aaa',
+                age: 20,
+                gender: '男',
+                address: '北京市海淀区'
+            },
+            {
+                name: 'bbb',
+                age: 21,
+                gender: '男',
+                address: '北京市海淀区'
+            },
+            {
+                name: 'ccc',
+                age: 22,
+                gender: '男',
+                address: '北京市海淀区'
+            },
+            {
+                name: 'ddd',
+                age: 23,
+                gender: '男',
+                address: '北京市海淀区'
+            },
+            {
+                name: 'eee',
+                age: 24,
+                gender: '男',
+                address: '北京市海淀区'
+            },
+        ];
+
+
+// 方法一  用underscore  
+        function renderTable(tmpArr) {
+            var trs = [];
+            var tpl = document.getElementById('trTpl').innerHTML;
+            var compiled = _.template(tpl);
+
+            _.each(tmpArr, function(obj) {
+
+                // console.log(compiled(obj));
+                trs.push(compiled(obj));
+            });
+            // console.log(trs);
+            tbody.innerHTML = trs.join('');
+
+        }
+
+        renderTable(arr);
+
+
+
+// 方法二
+
+        /*var tbody = document.getElementById('tbody');
+            
+        function table() {
+            var i, len = arr.length, tdArr = [];
+
+            for(i=0; i<len; i++) {
+                // console.log(arr[i]);
+                tdArr.push(
+                    '<tr>',
+                        '<td>', arr[i].name,'</td>',
+                        '<td>', arr[i].age,'</td>',
+                        '<td>', arr[i].gender,'</td>',
+                        '<td>', arr[i].address,'</td>',
+                    '</tr>'
+                )
+            }
+
+            tbody.innerHTML = tdArr.join('');
+        }
+
+        table();*/
+
+
+// 小例子
+
+        /*var a = [1, 2, 3, 4, 5, 8, 9];
+        _.each(a, function(item) {
+            console.log(item);
+        })*/
+
+
+        var b = [1, 2, 3]
+       // var c =  _.map(b, function(num) {return num * 3});
+        var c = _.map(b, function(num) {return '<option>' + num + '</option>'});
+        console.log(c);
+    </script>
+</body>
+</html>

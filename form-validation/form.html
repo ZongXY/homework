@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>表单验证</title>
+</head>
+<body>
+    <form action="" onsubmit="return checkForm()">
+        <div>
+            <label>姓名：<input id="name" type="text"></label>
+        </div>
+        <div>
+            <label for="age">年龄：</label><input id="age" type="text">
+        </div>
+        <div>
+            <label>手机：<input id="mobile" type="text"></label>
+        </div>
+        <div>
+            <label>邮箱：<input id="email" type="text"></label>
+        </div>
+        <div>
+            <label>性别：</label>
+            <label><input name="gender" type="radio" checked="checked">男</label>
+            <label><input name="gender" type="radio">女</label>
+        </div>
+        <div>
+            <label>爱好：</label>
+            <label><input name="hobby" type="checkbox">旅游</label>
+            <label><input name="hobby" type="checkbox">看书</label>
+            <label><input name="hobby" type="checkbox">看电影</label>
+        </div>
+        <div>
+            <label>学历：</label>
+            <select name="" id="education">
+                <option value="0">请选择</option>
+                <option value="1">大专</option>
+                <option value="2">本科</option>
+                <option value="3">硕士</option>
+                <option value="4">博士</option>
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="注册">
+        </div>
+    </form>
+
+
+
+    <script src="../lib/lib.js"></script>
+
+    <script>
+
+        function checkForm() {
+
+            var name = $('name'),
+                age = $('age'),
+                mobile = $('mobile'),
+                email = $('email'),
+                education = $('education'),
+
+                mobileRE = /^1\d{10}$/,  // 手机号表单验证 正则表达式
+
+                emailRE = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/,    // 邮箱表单验证 正则表达式
+
+                hobbies = document.getElementsByName('hobby'),
+                i, len = hobbies.length;
+
+
+            if(name.value == '') {
+                alert('姓名不能为空！');
+                return false;
+            }
+
+        // 年龄
+            if(age.value == '') {
+                alert('年龄不能为空！');
+                return false;
+            }
+
+            if(isNaN(age.value)) {
+                alert('年龄必须是一个数字');
+                return false;
+            }
+
+
+        // 手机号
+            if(mobile.value == '') {
+                alert('号码不能为空！');
+                return false;
+            }
+
+            if(!mobileRE.test(mobile.value)) {
+                alert('手机号码格式不正确');
+                return false;
+            }
+
+
+        // 邮箱
+            if(email.value == '') {
+                alert('邮箱不能为空！');
+                return false;
+            }
+
+            if(!emailRE.test(email.value)){
+                alert('邮箱格式不正确！');
+                return false;
+            }
+
+
+
+
+            /*console.log(hobbies);
+            for(i=0; i<len; i++) {
+                if(!hobbies[i].checked) {
+                    alert('必须选择一个爱好！');
+                    return false;
+                }
+            }*/
+
+
+            if(!checkHobby(hobbies)) {
+                alert('至少选择一个爱好！');
+                return false;
+            }
+
+
+            // console.log(education.value);
+            if(education.value == 0) {
+                alert('请选择你的学历');
+                return false;
+            }
+
+            alert('表单可以提交');
+            return false;
+        }
+
+
+        function checkHobby(hobbies) {
+            var i, len = hobbies.length;
+            for(i=0; i<len; i++) {
+                if(hobbies[i].checked) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+    </script>
+</body>
+</html>

@@ -3,42 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <title>动态生成下拉菜单</title>
+    <script src="../underscore-min.js"></script>
 </head>
 <body>
+
     请选择去哪里玩：<select id="mySel">
         <option value="0">请选择</option>
     </select>
     <button id="genBtn">生成</button>
 
 
+<!-- 方法一 -->
     <script>
-    var arr = ["故宫", "长城", "圆明园", "十三陵", "十渡", "颐和园", "世界公园"];
+        var genBtn = document.getElementById('genBtn');
+        var mySel = document.getElementById('mySel');
 
-    var genBtn = document.getElementById('genBtn');
-    var mySel = document.getElementById('mySel');
+        var arr = ["请选择", "故宫", "长城", "圆明园", "十三陵", "十渡", "颐和园", "世界公园"];
 
-    genBtn.onclick = function() {
+        var i = 0;
+
+        var optStr = _.map(arr, function(item) {return '<option value="'+ (i++) +'">' + item + '</option>'});
+
+            // console.log(optStr);
+
+        genBtn.onclick = function() {
+            mySel.innerHTML = optStr;
+        }
+
+
+
+
+   /* 
+
+// 方法二
+
+   genBtn.onclick = function() {
         
 
-        /*var i, len = arr.length,
-            optStr = '<option value="0">请选择</option>';  //用字符串添加
-            for (i=0; i<len; i++) {
-                optStr += '<option value="'+ (i+1)+'">' + arr[i] + '</option>';
-            }
+        // var i, len = arr.length,
+        //     optStr = '<option value="0">请选择</option>';  //用字符串添加
+        //     for (i=0; i<len; i++) {
+        //         optStr += '<option value="'+ (i+1)+'">' + arr[i] + '</option>';
+        //     }
             
-            mySel.innerHTML = optStr;
-            console.log(optStr);*/
+        //     mySel.innerHTML = optStr;
+        //     console.log(optStr);
 
-        var i, len = arr.length, 
-            optArr = ['<option value="0">请选择</option>'];
-            for(i=0; i<len; i++) {
-                optArr.push('<option value="' + (i+1) +'">' + arr[i] + '</option>');
 
-                mySel.innerHTML = optArr.join('');
-            }
+
+// 方法三
+
+        // var i, len = arr.length, 
+        //     optArr = ['<option value="0">请选择</option>'];  // 用数组添加 
+        //     for(i=0; i<len; i++) {
+        //         optArr.push('<option value="' + (i+1) +'">' + arr[i] + '</option>');
+
+        //         mySel.innerHTML = optArr.join('');
+        //     }
             
-            console.log(optArr.join(' '));
-    }
+        //     console.log(optArr.join(' '));
+    }*/
+
+
     </script>
 </body>
 </html>
