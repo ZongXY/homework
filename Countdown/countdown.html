@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+
+    <style>
+
+        .red-txt {
+            color: red;
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+    
+    <div class="wp">
+        <h1 id="time">00:00:00</h1>
+        <div>
+            <input id="userIpt" type="text">
+            <select id="userSel">
+                <option value="0">请选择</option>
+                <option value="3600">小时</option>
+                <option value="60">分钟</option>
+                <option value="1">秒</option>
+            </select>
+            <button id="startBtn">开始倒计时</button>
+        </div>
+    </div>
+
+
+
+    <script src="../lib/lib.js"></script>
+    <script>
+
+        var daojishi = function() {
+            var startBtn = $('startBtn');
+            var userIpt = $('userIpt');
+            var userSel = $('userSel');
+            var time = $('time');
+
+            startBtn.onclick = function() {
+                var ipt = userIpt.value;
+                var sel = userSel.value;
+                var total;
+
+/*                //数据检查
+                if(userIpt.value == '') {
+                    alert('输入不能为空');
+                    return false;
+                }
+
+                if(isNaN(userIpt.value)) {
+                    alert('请输入正确数值');
+                    return false;
+                }*/
+
+                if(isNaN(userIpt.value) || userIpt.value == '') {
+                    alert('无效数字');
+                    return;
+                }
+
+
+                if(userSel.value == 0) {
+                    alert('请选择时间单位')
+                    return false;
+                }
+
+
+                total = ipt * sel;
+
+                countDown(total);
+
+                // console.log(total);
+                
+                function countDown(seconds) {
+                    //TODO
+                    var h, m, s, timer;
+
+                    timer = setInterval(function() {
+
+                        seconds--;
+
+                        if((seconds+1) == 0) {
+
+                            clearInterval(timer);
+                            alert('时间到');
+                            userIpt.value = '';
+                            return;
+
+                        } else if (seconds < 10) {
+                            time.className = 'red-txt';
+                            // time.style.color = 'red';
+                        }
+
+                        // h = Math.floor(seconds / (60 * 60));
+                        // m = Math.floor(seconds % (60 * 60) / 60);
+                        // s = Math.floor(seconds % 60);
+
+                        var test = function() {
+
+                            h = Math.floor(seconds / (60 * 60));
+                            m = Math.floor(seconds % (60 * 60) / 60);
+                            s = Math.floor(seconds % 60);
+                            time.innerHTML = fill0(h) + ':' + fill0(m) + ':' + fill0(s);
+                        };
+
+                        test();
+                        
+                        // time.innerHTML = fill0(h) + ':' + fill0(m) + ':' + fill0(s);
+
+                    }, 1000);
+
+                }
+
+            }
+        };
+
+        daojishi();
+
+
+    </script>
+</body>
+</html>
