@@ -20,34 +20,34 @@
 
         var arr = ["请选择", "故宫", "长城", "圆明园", "十三陵", "十渡", "颐和园", "世界公园"];
 
-        var i = 0;
+        // var i = 0;
 
-        var optStr = _.map(arr, function(item) {return '<option value="'+ (i++) +'">' + item + '</option>'});
+        // var optStr = _.map(arr, function(item) {return '<option value="'+ (i++) +'">' + item + '</option>'});
 
-            // console.log(optStr);
+        //     // console.log(optStr);
 
-        genBtn.onclick = function() {
-            mySel.innerHTML = optStr;
-        }
-
-
+        // genBtn.onclick = function() {
+        //     mySel.innerHTML = optStr;
+        // }
 
 
-   /* 
+
+
+    
 
 // 方法二
 
    genBtn.onclick = function() {
         
 
-        // var i, len = arr.length,
-        //     optStr = '<option value="0">请选择</option>';  //用字符串添加
-        //     for (i=0; i<len; i++) {
-        //         optStr += '<option value="'+ (i+1)+'">' + arr[i] + '</option>';
-        //     }
+        var i, len = arr.length,
+            optStr = '<option value="0">请选择</option>';  //用字符串添加
+            for (i=0; i<len; i++) {
+                optStr += '<option value="'+ (i+1)+'">' + arr[i] + '</option>';
+            }
             
-        //     mySel.innerHTML = optStr;
-        //     console.log(optStr);
+            mySel.innerHTML = optStr;
+            console.log(optStr);
 
 
 
@@ -62,7 +62,7 @@
         //     }
             
         //     console.log(optArr.join(' '));
-    }*/
+    }
 
 
     </script>

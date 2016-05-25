@@ -46,62 +46,62 @@
 
 
     <script>
-    function initCheckBox() {
-        var all = document.getElementById('all'),
-            chks = document.getElementsByName('chks'),
-            len = chks.length,
-            bgColor,
-            j,
-            k;
+        function initCheckBox() {
+            var all = document.getElementById('all'),
+                chks = document.getElementsByName('chks'),
+                len = chks.length,
+                bgColor,
+                j,
+                k;
 
-        all.onclick = function() {
-            var i, status = '', bgColor = '';
-            if(this.checked) {
-                status = 'checked';
-                bgColor = 'yellow';
-            } else {
-                status = '';
-                baColor ='#fff';
+            all.onclick = function() {
+                var i, status = '', bgColor = '';
+                if(this.checked) {
+                    status = 'checked';
+                    bgColor = 'yellow';
+                } else {
+                    status = '';
+                    bgColor ='#fff';
+                }
+
+                for(i=0; i<len; i++) {
+                    chks[i].checked = status;
+                    chks[i].parentNode.parentNode.style.backgroundColor = bgColor;
+                }
             }
 
-            for(i=0; i<len; i++) {
-                chks[i].checked = status;
-                chks[i].parentNode.parentNode.style.backgroundColor = bgColor;
-            }
-        }
+            for(j=0;j<len;j++) {
 
-        for(j=0;j<len;j++) {
+                    chks[j].onclick = function() {
 
-                chks[j].onclick = function() {
-
-                    if(this.checked) {
-                        this.parentNode.parentNode.style.backgroundColor='yellow';
-                    }else {
-                         this.parentNode.parentNode.style.backgroundColor='#fff';
+                        if(this.checked) {
+                            this.parentNode.parentNode.style.backgroundColor='yellow';
+                        }else {
+                             this.parentNode.parentNode.style.backgroundColor='#fff';
+                        }
+                        
+                        if(ischeckedAll()) {
+                            all.checked = 'checked';
+                        } else {
+                            all.checked = '';
+                        }
                     }
+            }
+            
+                function ischeckedAll() {
                     
-                    if(ischeckedAll()) {
-                        all.checked = 'checked';
-                    } else {
-                        all.checked = '';
+                    for(k=0;k<len;k++) {
+                        if(!chks[k].checked) {
+                            return false;
+                        }
                     }
+                    return true;
                 }
         }
-        
-            function ischeckedAll() {
-                
-                for(k=0;k<len;k++) {
-                    if(!chks[k].checked) {
-                        return false;
-                    }
-                }
-                return true;
-            }
-    }
 
 
 
-    initCheckBox();
+        initCheckBox();
 
     </script>
 </body>

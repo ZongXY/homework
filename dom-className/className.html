@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>实现兼容所有浏览器的className</title>
+</head>
+<body>
+
+    <div class="red">div1</div>
+    <div class="red">div2</div>
+    <div class="red-2">div3</div>
+    <div class="red">div4</div>
+    <div class="red-2 mt20">div5</div>
+    <div class="red">div6</div>
+
+    <span class="red">span1</span>
+    <span class="red-2">span2</span>
+
+    <script src="../lib/lib.js"></script>
+
+    <script>
+        var divs = $cls('red-2'),
+            len = divs && divs.length || 0, // ???
+            i;
+
+        for(i=0; i<len; i++) {
+            divs[i].style.backgroundColor = 'red';
+        }
+
+        // console.log(divs);
+        // 
+        
+
+        //根据元素的样式名，返回dom对象集合
+
+        function $cls(clsName) {
+            var i, eles, len, resArr = [];
+
+            // if(document.getElementsByClassName) {    //支持该方法的浏览器  如谷歌
+            //     return document.getElementsByClassName(clsName);
+            // }
+
+
+         //  不支持该方法的浏览器  IE8
+
+            eles = $$('*');
+
+            // console.log(eles);
+            
+            len = eles.length;
+            
+            for(i=0; i<len; i++) {    
+                if(eles[i].className.indexOf(clsName) > -1 ) {   //???
+
+                    resArr.push(eles[i]);
+                    // console.log(clsName);
+                }
+                // console.log(eles[i].className);
+            }
+
+            return resArr;
+
+            // return document.getElementsByClassName(clsName);
+         }
+
+    </script>
+</body>
+</html>
