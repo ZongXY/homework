@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>兼容所有浏览器的placeholder</title>
+    <style>
+        .ph-wp {
+            display: inline-block;
+            position: relative;
+        }
+
+        .ph {
+            position: absolute;
+            top: 3px;
+            top: 5px\0;  /*\0 支持ie浏览器，chrome浏览器不能识别*/
+            left: 3px;
+            width: 100%;
+            height: 100%;
+            color: #a9a9a9;
+            font-size: 13px;
+
+        }
+    </style>
+</head>
+
+
+<body>
+    <span class="ph-wp">
+        <span class="ph"></span>
+        <input type="text" placeholder="请输入姓名">
+    </span>
+
+    <hr>
+
+    <span class="ph-wp">
+        <span class="ph"></span>
+        <input type="text" placeholder="请输入手机号">
+    </span>
+
+    <script src="../lib/lib.js"></script>
+
+    <script>
+        var placeholderFix = function() {
+            var input = document.createElement('input'),
+                ipts = $$('input'),
+                len = ipts.length,
+                i, phTxt, phSpan;
+
+            if('placeholder' in input) {
+                for(i=0; i<len; i++) {
+                    phSpan = ipts[i].parentNode.getElementsByTagName('span')[0].style.display = 'none';
+                }
+            }
+            // if('placeholder' in input) {    //判断浏览器中 input元素是否有 placeholder属性
+            //     return true;
+            // }
+            
+            // console.log(input);
+            
+            for(i=0; i<len; i++) {
+                phTxt = ipts[i].getAttribute('placeholder');
+                phSpan = ipts[i].parentNode.getElementsByTagName('span')[0];
+
+                // console.log(ipts[i].parentNode.getElementsByTagName('span')[0]);
+                // console.log(phTxt);
+                
+                phSpan.innerHTML = phTxt;
+ 
+                phSpan.onclick = function() {
+                    this.parentNode.getElementsByTagName('input')[0].focus();
+                }
+
+                ipts[i].onkeyup = function() {   //onkeyup() 键盘事件
+                    var status = 'block';
+                    if(this.value.length > 0) {
+                        status = 'none';
+                    }
+
+                    this.parentNode.getElementsByTagName('span')[0].style.display = status;
+                }
+
+            }
+        };
+
+        placeholderFix();
+
+
+    </script>
+</body>
+</html>
