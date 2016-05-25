@@ -48,24 +48,24 @@
                 var sel = userSel.value;
                 var total;
 
-/*                //数据检查
-                if(userIpt.value == '') {
-                    alert('输入不能为空');
-                    return false;
-                }
+                //数据检查
+                // if(ipt == '') {
+                //     alert('输入不能为空');
+                //     return false;
+                // }
 
-                if(isNaN(userIpt.value)) {
-                    alert('请输入正确数值');
-                    return false;
-                }*/
+                // if(isNaN(ipt)) {
+                //     alert('请输入正确数值');
+                //     return false;
+                // }
 
-                if(isNaN(userIpt.value) || userIpt.value == '') {
+                if(isNaN(ipt) || ipt == '') {
                     alert('无效数字');
                     return;
                 }
 
 
-                if(userSel.value == 0) {
+                if(sel == 0) {
                     alert('请选择时间单位')
                     return false;
                 }
