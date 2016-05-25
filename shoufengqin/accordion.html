@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>手风琴</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: #2d2c41;
+            font-family: 'Microsoft yahei';
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        .accordion {
+            width: 300px;
+            margin: 50px auto;
+            /*background-color: #fff;*/
+            /*border: 1px solid #009688;*/
+            border-radius: 5px;
+        }
+
+        .title {
+            text-indent: 10px;
+            cursor: pointer;
+            margin-bottom: 1px;
+        }
+
+        .title ul {
+            display: none;
+        }
+
+        .title p {
+            height: 35px;
+            line-height: 35px;
+            background-color: #009688;
+            /*color: #d9d9d1;*/
+        }
+
+        .title ul li {
+            height: 35px;
+            line-height: 35px;
+            background-color: #444359;
+            color: #d9d9d1;
+        }
+
+        .title ul li:hover {
+            background-color: #b63b4d;
+        }
+
+        .red {
+            color: #b63b4d;
+        }
+    </style>
+
+    <script src="../jquery-1.12.3.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            var $title = $('.title');
+            $title.on('click', function() {
+                // alert(this.innerHTML)
+                var $this = $(this);
+
+                $this
+                    .find('p').addClass('red')
+                    .end()
+                    .find('ul').slideToggle()
+                    .end()
+                    .siblings()
+                    .find('p').removeClass('red')
+                    .end()
+                    // .find('ul').hide();
+                    .find('ul').slideUp()
+                    ;
+            })            
+        })
+        
+    </script>
+</head>
+<body>
+    <div class="accordion">
+        <div class="title">
+            <p>HTML课程</p>
+            <ul>
+                <li>第一课</li>
+                <li>第二课</li>
+                <li>第三课</li>
+            </ul>
+        </div>
+        <div class="title">
+            <p>CSS课程</p>
+            <ul>
+                <li>第1课</li>
+                <li>第2课</li>
+                <li>第3课</li>
+            </ul>
+        </div>
+        <div class="title">
+            <p>JavaScript课程</p>
+            <ul>
+                <li>第一节</li>
+                <li>第二节</li>
+                <li>第三节</li>
+            </ul>
+        </div>
+        <div class="title">
+            <p>AngularJs课程</p>
+            <ul>
+                <li>第一章</li>
+                <li>第二章</li>
+                <li>第三章</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
