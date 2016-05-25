@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>数组去重</title>
+</head>
+<body>
+    
+
+    <script>
+        function uniq(arr) {
+            var i, j, len = arr.length;
+            // console.log(len);
+            
+            for(i=0; i<len; i++) {
+                // console.log(arr[i]);
+            
+                for(j=0; j<len; j++) {
+
+                    // console.log(arr[j]);
+                    
+                    if(arr[i] === arr[j+1]) {
+                        arr.splice(i, 1);   //数组splice() 方法
+                        console.log(arr[i]);
+                    }
+                }
+            }
+        }
+
+        uniq([1, 3, 2, 2, 1, 6, 8, 6, '8', undefined, 7]);
+
+
+
+
+        // 小例子
+
+        // var arr = [1, 3, 2, 2, 1, 6, 8, 6, '8', undefined, 7];
+
+        //slice 用法
+        // console.log(arr.slice(3, 7));  //返回值是[2, 1, 6, 8]
+        // console.log(arr);              // arr = [1, 3, 2, 2, 1, 6, 8, 6, '8', undefined, 7];
+        // console.log(arr.slice(7));      //返回值是[6, '8', undefined, 7]
+        // console.log(arr);                     //不影响arr的值
+
+
+
+        // splice() 用法
+        console.log(arr.splice(3, 3));  //返回值是[2, 1, 6]
+        console.log(arr);                    // 影响arr的值  arr = [1, 3, 2, 8, 6, "8", undefined, 7]
+        console.log(arr.splice(6, 0, 'f'));   //返回值是[]
+        console.log(arr);                     // 影响arr的值  arr = [1, 3, 2, 8, 6, "8", "f", undefined, 7]
+
+
+    </script>
+</body>
+</html>
