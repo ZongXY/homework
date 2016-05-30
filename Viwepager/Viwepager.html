@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>图片轮播</title>
+    <link rel="stylesheet" href="../lib/lib.css">
+
+    <style>
+        .img-slider {
+            height: 260px;
+            width: 400px;
+            margin: 30px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px
+        }
+
+        .img-slider ul {  
+            width: 2400px;  /*如果不写总宽度会有白板*/
+        }
+
+        .img-slider ul li{
+            float: left;
+            height: 260px;
+            width: 400px;
+        }
+
+        .img-slider ul li img {
+            display: block;
+        }
+
+        .img-slider a {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            margin-top: -20px;
+            height: 40px;
+            width: 20px;
+            /*background-color: rgba(0, 0, 0, 0.5);*/
+            background-color: #000;
+            opacity: 0.5;
+            filter:alpha(opacity=20);
+            /*display: none;*/
+        }
+
+        .img-slider a i {
+            position: absolute;
+            border-width: 10px;
+            border-style: solid;
+        }
+
+        .img-slider a.next i {
+            margin-left: 6px;
+            margin-top: 10px;
+            border-color: transparent transparent transparent #fff;
+        }
+
+        .img-slider a.next i:after {
+            content:'<i></i>';
+            width: 0;
+            height: 0;
+            position: absolute;
+            border-width: 10px;
+            border-style: solid;
+            margin-left: -13px;
+            margin-top: -10px;
+            border-color: transparent transparent transparent rgba(0, 0, 0, 0.5);
+
+
+        }
+
+        .img-slider a.prev i {
+            margin-left: 6px;
+            margin-top: 10px;
+            border-color: transparent #fff transparent transparent;
+        }
+
+        .img-slider:hover a {
+            display: block;
+        }
+
+        .img-slider a.next {
+            right: 0;
+            left: auto;
+        }
+
+        .img-slider ol {
+            position: absolute;
+            left: 50%;
+            margin-left: -50px;
+            bottom: 20px;
+            width: 96px;
+            height: 16px;
+            line-height: 20px;
+            text-align: center;
+            background-color: rgba(244, 67, 54, 0.33);
+            border-radius: 8px;
+        }
+
+        .img-slider ol li {
+            float: left;
+            height: 10px;
+            width: 10px;
+            margin: 3px;
+            border-radius: 5px;
+            background-color: #FFC107;
+            cursor: pointer;
+        }
+
+        .img-slider ol li.active {
+            background-color: #00BCD4;
+        }
+
+    </style>
+
+    <script src="../jquery-1.12.3.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var $slider = $('.img-slider'),
+                $ul = $('.img-slider > ul'),   //$ul = $slider.find('ul')
+                $ol = $slider.find('ol'),
+                len = $ul.find('li').length,
+                width = $ul.find('li').width(),
+                ulWidth = len * width,
+                timer;
+
+            $slider.find('a').on('click', function() {
+                var $this = $(this),
+                    currIndex = $ol.find('li.active').index();
+
+                if($('ul:animated').length > 0) {
+                    return;
+                }
+
+                if($this.hasClass('next')) {
+                    currIndex++;
+                    currIndex = (currIndex == len) ? 0 : currIndex;
+                } else {
+                    currIndex--;
+                    if(currIndex < 0) {
+                        currIndex = len - 1;
+
+                    }
+                }
+
+                $ol.find('li').eq(currIndex).trigger('click');
+                // console.log(currIndex)
+                
+            })
+
+            $ol.find('li').on('click', function() {
+                var $this = $(this),
+                    index = $this.index();
+                // console.log(index)
+
+                $ul.animate({marginLeft: -width * index}, 200, function() {
+                    $this.addClass('active').siblings('.active').removeClass('active');
+                } )
+            })
+
+            $slider
+                    .on('mouseover', function() {
+                        clearInterval(timer);
+                    })
+                    .on('mouseout', function() {
+                        runner();
+                    })
+
+            function runner() {
+                timer = setInterval(function() {
+                    $('.img-slider > a.next').trigger('click');
+                }, 2000);
+            }
+
+            runner();
+        });
+    </script>
+
+</head>
+<body>
+    <div class="img-slider">
+        <ul>
+            <li><img src="img/d1.jpg" alt=""></li>
+            <li><img src="img/d2.jpg" alt=""></li>
+            <li><img src="img/d3.jpg" alt=""></li>
+            <li><img src="img/d4.jpg" alt=""></li>
+            <li><img src="img/d5.jpg" alt=""></li>
+            <li><img src="img/d6.jpg" alt=""></li>
+        </ul>
+        <a class="prev" href="javascrip:;"><i></i></a> <!--href="javascrip:;"  点击a的时候不会刷新当前页面-->
+        <a class="next" href="javascrip:;"><i></i></a>
+        <ol>
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+</body>
+</html>
