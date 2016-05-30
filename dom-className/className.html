@@ -20,8 +20,10 @@
 
     <script>
         var divs = $cls('red-2'),
-            len = divs && divs.length || 0, // ???
+            // len = divs && divs.length || 0, // ???
+            len = divs.length,
             i;
+        console.log(divs);
 
         for(i=0; i<len; i++) {
             divs[i].style.backgroundColor = 'red';
@@ -45,7 +47,7 @@
 
             eles = $$('*');
 
-            // console.log(eles);
+            console.log(eles);
             
             len = eles.length;
             
@@ -63,6 +65,7 @@
             // return document.getElementsByClassName(clsName);
          }
 
+         console.log($cls('red-2'))
     </script>
 </body>
 </html>
