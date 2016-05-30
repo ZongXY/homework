@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>无缝滚动</title>
+
+    <link rel="stylesheet" href="../lib/lib.css">
+    <style>
+        .img-scroll {
+            height: 80px;
+            width: 800px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .img-scroll ul {
+            overflow: hidden;
+        }
+
+        .img-scroll ul li {
+            width: 120px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            float: left;
+            margin-right: 5px;
+            background-color: red;
+        }
+    </style>
+
+    <script src="../jquery-1.12.3.js"></script>
+
+    <script>
+        $(document).ready( function() {
+            var $imgScroll = $('.img-scroll'),
+                $ul = $imgScroll.children(),
+                $lis = $ul.find('li'),
+                len,
+                width = $ul.find('li').width(),
+                timer;
+                
+
+            $ul.append($ul.find('li').clone());
+
+            len = $ul.find('li').length;
+
+            // console.log(len)
+            
+            $ul.on('mouseover', function() {
+                clearInterval(timer)
+            })
+
+           
+                function scroll() {
+                    $ul.animate({marginLeft: -width}, 1000, function() {
+                        $ul
+                            .append($ul.find('li:first-child'))
+                            .css('margin-left', 0);
+                    })
+                }
+
+                timer = setInterval(scroll,1000);
+            });
+
+            // function scroll() {
+            //     $ul.animate({marginLeft: -width}, 1000, function() {
+            //         $ul
+            //             .append($ul.find('li:first-child'))
+            //             .css('margin-left', 0);
+            //     })
+            // }
+
+            // timer = setInterval(scroll,1000);
+
+    </script>
+
+</head>
+<body>
+    <div class="img-scroll">
+        <ul>
+            <li>item1</li>
+            <li>item2</li>
+            <li>item3</li>
+            <li>item4</li>
+            <li>item5</li>
+        </ul>
+    </div>
+</body>
+</html>
