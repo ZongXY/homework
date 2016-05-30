@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>滑动停靠菜单</title>
+    <link rel="stylesheet" href="css/slide.css">
+
+    <script src="../jquery-1.12.3.js"></script>
+
+    <script>
+
+        $(document).ready( function() {
+            var $slideMenu = $('.slideMenu'),
+                $trigger = $('.trigger');
+
+            $trigger.on('click', function() {
+
+                if($slideMenu.hasClass('r0')) {
+                    $slideMenu.animate({right: -100}, 1000).removeClass('r0');
+                } else {
+                    $slideMenu.animate({right: 0}, 1000).addClass('r0');
+                }
+
+                // $slideMenu.css('right', 0);
+                
+                // $slideMenu.toggleClass('r0');
+             
+            });
+        });
+
+    </script>
+</head>
+<body>
+    
+    <div class="slideMenu">
+        <div class="trigger"></div>
+    </div>
+</body>
+</html>
