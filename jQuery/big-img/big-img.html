@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>图片放大镜效果</title>
+    <link rel="stylesheet" href="../../lib/lib.css">
+
+    <style>
+        body {
+            background-color: #eee;
+        }
+
+        .img-zoom-wp {
+            width: 352px;
+            margin: 20px 0 0 20px;
+            background-color: #fff;
+        }
+
+        .big-img-wp {
+            height: 350px;
+            width: 350px;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+
+        .big-img-wp img {
+            width: 100%;
+        }
+
+        .small-img-wp {
+            position: relative;
+        }
+
+        .small-img-wp .icon {
+            background-image: url(img/icon.png);
+            width: 14px;
+            height: 54px;
+        }
+
+        .small-img-wp .prev {
+            background-position: -56px -346px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .small-img-wp .next {
+            background-position: -14px -346px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .small-img-wp .small-img-inner {
+            width: 310px;
+            margin: 0 auto;
+            overflow: hidden;
+
+        }
+
+        .small-img-wp .small-img-inner ul {
+            height: 60px;
+            width: 620px;
+            overflow: hidden;
+        }
+
+        .small-img-wp .small-img-inner li {
+            height: 54px;
+            width: 58px;
+            border: 2px solid transparent;
+            text-align: center;
+            float: left;
+        }
+
+        .small-img-wp .small-img-inner li.active {
+            border: 2px solid red;
+        }
+
+        .small-img-inner li img {
+            width: 50px;
+            height: 50px;
+            display: block;
+            padding: 2px;
+        }
+
+        .img-masker {
+            height: 200px;
+            width: 200px;
+            background-color: yellow;
+            opacity: 0.5;
+            position: absolute;
+            border: 1px solid #ccc;
+            visibility: hidden;
+        }
+
+        .img-zoomer {
+            height: 350px;
+            width: 350px;
+            border: 1px solid #ccc;
+            position: absolute;
+            top: -1px;
+            right: -352px;
+            visibility: hidden;
+        }
+
+        .big-img-wp .tmp-big-img {
+            width: auto;
+            height: auto;
+            display: none;
+
+        }
+    </style>
+
+    <script src="../../jquery-1.12.3.js"></script>
+
+    <script type="text/javascript">
+        function ImgZoomer(selecter) {
+            this.selector = selecter;
+            this.init();
+        }
+
+        ImgZoomer.prototype = {
+            $target: null,
+            $bigImgWp: null,
+            $bigImg: null,
+            $prevNext: null,
+            $smallImgUl: null,
+            init: function() {
+                $target = $(this.selector);
+                $bigImgWp = $target.find('.big-img-wp');
+                $bigImg = $bigImgWp.find('.big-img');
+                $tmpBigImg = $bigImgWp.find('.tmp-big-img');
+                $imgMasker = $bigImgWp.find('.img-masker');
+                $imgZoomer = $bigImgWp.find('.img-zoomer');
+                $prevNext = $target.find('a.prev, a.next');
+                $smallImgUl = $target.find('.small-img-inner>ul');
+                this.initBigImgWpMouseEvt();
+                this.initSmallImgHover();
+                this.initPrevNext();
+            },
+
+            initBigImgWpMouseEvt: function() {
+                $bigImgWp.on('mouseenter', function() {
+                    $imgMasker.add($imgZoomer).css('visibility', 'visible');
+                }).on('mouseleave', function() {
+                    $imgMasker.add($imgZoomer).css('visibility', 'hidden');
+                }).on('mousemove', function(e) {
+                    var w = $imgMasker.width(), h = $imgMasker.height(),
+                        bh = $bigImg.height(), bw = $bigImg.width(),
+                        oh = $tmpBigImg.height(), ow =$tmpBigImg.width(), 
+                        top = e.pageY - $bigImgWp.offset().top - h / 2,
+                        left = e.pageX - $bigImgWp.offset().left - w / 2;
+                        // top = e.pageY - h / 2,
+                        // left = e.pageX- w / 2;
+                    
+                    var scaleX = ow / bw;
+                    var scaleY = oh / bh;
+                    // console.log(scaleX)
+
+                    var btop = e.pageY * scaleY - $('.img-zoomer').height() / 2;
+                    var bleft = e.pageX * scaleX - $('.img-zoomer').height() / 2;
+                    // console.log(bleft)
+
+                    top = top < 0 ? 0 : top;
+                    if(top + h > bh) {
+                        top = bh - h;
+                    }
+
+                    left = left < 0 ? 0 : left;
+                    if(left + w > bw) {
+                        left = bw - w;
+                    }
+
+                    $imgMasker.css({
+                        top: top + 'px',
+                        left: left + 'px'
+                    });
+
+
+                    $imgZoomer.css( "background", "url(" + $tmpBigImg.attr("src") +") no-repeat");
+                    $imgZoomer.css({
+                        "background-position": -bleft + "px" + " " + -btop + "px"
+                    })
+                })
+            },
+
+                    
+            initSmallImgHover: function() {
+                var $lis = $target.find('.small-img-inner li');
+                $lis.on('mouseover', function() {
+                    var $this = $(this);
+                    $bigImg.attr('src',$this.find('img').attr('src'));
+                    $tmpBigImg.attr('src', $this.find('img').attr('bsrc'));
+                    $this.addClass('active').siblings('.active').removeClass('active');
+                });
+            },
+
+            initPrevNext: function() {
+                $prevNext.on('click', function() {
+                    var $this = $(this);
+                    var len = $smallImgUl.find('li').length;
+                    // console.log(len);
+                    var mLeft = (len - 5) * 62;
+                    console.log(mLeft)
+                    if(mLeft <= 0) return;
+
+
+                    if($this.hasClass('next')) {
+                        $smallImgUl.animate({marginLeft: -mLeft});
+                    } else {
+                        $smallImgUl.animate({marginLeft: 0});
+                    };
+                })
+            }
+        }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            new ImgZoomer('.img-zoom-wp');
+        })
+    </script>
+
+</head>
+<body>
+    <div class="img-zoom-wp">
+
+        <div class="big-img-wp">
+            <img class="big-img" src="img/d01.jpg" alt="">
+            <img class="tmp-big-img" src="img/m1.jpg" alt="">
+            <div class="img-masker"></div>
+            <div class="img-zoomer"></div>
+        </div>
+
+        <div class="small-img-wp">
+            <a href="javascript:" class="icon prev"></a>
+            <div class="small-img-inner">
+                <ul>
+                    <li class="active"><img src="img/d01.jpg" bsrc="img/m1.jpg" alt=""></li>
+                    <li><img src="img/d02.jpg" bsrc="img/m2.jpg" alt=""></li>
+                    <li><img src="img/d03.jpg" bsrc="img/m3.jpg" alt=""></li>
+                    <li><img src="img/d04.jpg" bsrc="img/m1.jpg" alt=""></li>
+                    <li><img src="img/d05.jpg" bsrc="img/m2.jpg" alt=""></li>
+                    <li><img src="img/d01.jpg" bsrc="img/m3.jpg" alt=""></li>
+                    <li><img src="img/d02.jpg" bsrc="img/m1.jpg" alt=""></li>
+                    <li><img src="img/d03.jpg" bsrc="img/m2.jpg" alt=""></li>
+                    <li><img src="img/d04.jpg" bsrc="img/m3.jpg" alt=""></li>
+                    <li><img src="img/d05.jpg" bsrc="img/m1.jpg" alt=""></li>
+                </ul>
+            </div>
+            <a href="javascript:" class="icon next"></a>
+        </div>
+
+    </div>
+</body>
+</html>
