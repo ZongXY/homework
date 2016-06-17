@@ -1,0 +1,61 @@
+.scroller-wp {
+    width: 960px;
+    height: 141px;
+    margin: 20px auto;
+    background-image: url(../img/jiaoj2.png);
+    position: relative;
+}
+
+.scroller-inner {
+    width: 948px;
+    height: 90px;
+    overflow: hidden;
+    position: absolute;
+    top: 26px;
+    left: 7px;
+}
+
+.scroller-ul {
+    overflow: hidden;
+    float: left;
+}
+
+.scroller-ul li {
+    float: left;
+}
+
+.scroller-ul li img {
+    display: block;
+}
+
+
+.scroller {
+    width: 2400px;
+    overflow: hidden;
+}
+
+
+
+
+
+
+/*
+
+.scroller-wp a {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #000;
+    top: 50%;
+    margin-top: -15px;
+}
+
+.scroller-wp a.next {
+    right: 0;
+}
+
+
+
+
+
+}*/
