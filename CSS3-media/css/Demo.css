@@ -1,0 +1,255 @@
+html, body, ul, ol, li, h1, h3, h4, h5, p {
+    margin: 0;
+    padding: 0;
+}
+
+ul, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+body {
+    background-color: #0d1424;
+    background-image: url(../img/body-bg.jpg);
+    background-position: center top;
+    background-repeat: no-repeat;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.pagewrap {
+    width: 980px;
+    margin: auto;
+}
+
+
+.site-logo {
+    font-family:  Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.site-description {
+    transform: scale(1, 0.7);
+    font: italic 100%/130% "Times New Roman", Times, serif;
+    margin: 15px 0 20px 0;
+}
+
+.header-wp {
+    position: relative;
+}
+
+.header {
+    color: #fff;
+}
+
+.nav-wp {
+    background-color: #8a8a8a;
+    border-radius: 8px;
+}
+
+.nav-wp .nav:after {
+    visibility: hidden;
+    display: block;
+    content: '';
+    clear: both;
+    height: 0;
+}
+
+.nav-wp .nav li {
+    float: left;
+    font-size: 14px;
+    line-height: 40px;
+    padding: 0 14px 0 14px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.nav-wp .nav li.one {
+    margin-left: 10px;
+}
+
+.nav-wp .nav li:hover {
+    background-color: #2d2d2d;
+}
+
+.header-wp input {
+    position: absolute;
+    right: 10px;
+    bottom: 6px;
+    width: 140px;
+    height: 26px;
+    border-radius: 8px;
+    text-indent: 7px;
+    outline: none;
+    border: none;
+}
+
+.body-content {
+    width: 600px;
+    margin-top: 30px;
+    float: left;
+    overflow: hidden;
+    padding: 20px 35px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.content h1 {
+    cursor: pointer;
+}
+
+.content p {
+    color: #666;
+    font-size: 12px;
+    padding: 5px 0 0px 0;
+}
+
+/*.content p a:hover {
+    text-decoration: underline;
+}*/
+
+.content img {
+    width: 100%;
+    height: auto;
+    margin-top: 12px;
+}
+
+.content .detail {
+    line-height: 20px;
+    word-spacing: 1px;
+}
+.content-two {
+    margin: 20px 0;
+}
+
+.content-right{
+    float: right;
+    width: 280px;
+    margin-top: 30px;
+}
+
+
+.footer p {
+    color: #ccc;
+    font-size: 14px;
+}
+
+.footer p a {
+    color: #fff;
+}
+
+.footer {
+    clear: both;
+    padding: 30px 0 20px 0;
+}
+
+.content-right ul li {
+    line-height: 30px;
+}
+
+.content-right .sidebar-wp {
+    border-radius: 8px;
+    background-color: #fff;
+    margin-bottom: 30px;
+}
+
+.sidebar-wp ul {
+    margin: 0 20px;
+    padding: 10px 0 10px 0;
+}
+
+.sidebar-wp ul li.under {
+    border-bottom: 1px solid #ccc;
+}
+
+.sidebar-wp ul li a {
+    font-size: 13px;
+    color: #60b9ee;
+}
+
+.sidebar-wp ul li span {
+    font-size: 13px;
+    color: #333;
+}
+
+/*.sidebar-wp ul li a:hover {
+    text-decoration: underline;
+}*/
+
+.content-right .flik {
+    background-color: #fff;
+    border-radius: 8px;
+    height: 46px;
+    line-height: 46px;
+    text-indent: 20px;
+}
+
+@media screen and (max-width: 980px) {
+    .pagewrap {
+        width: 95%;
+    }
+
+    .body-content {
+        width: 60%;
+        padding: 3% 4%;
+        margin-bottom: 10px;
+    }
+
+    .content-right {
+        width: 30%;
+    }
+
+    .content-right ul {
+        padding: 8% 7%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+
+    .header-wp {
+        width: auto;
+    }
+
+    .header {
+        margin-bottom: 10px;
+    }
+
+    .header h5 {
+        margin: 0;
+    }
+
+    input.search {
+        position: absolute;
+        top: 5px;
+        right: 0;
+        width: 70px;
+
+    }
+
+    .body-content {
+        width:auto;
+        float: none;
+    }
+
+    .content-right {
+        margin-top: 20px;
+        width: 100%;
+        float: none;
+    }
+
+    .content-right .sidebar-wp {
+        margin-bottom: 10px;
+    }
+
+    .footer {
+        width: 100%;
+        padding-top:10px;
+    }
+}
