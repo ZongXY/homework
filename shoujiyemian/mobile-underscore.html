@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>手机页面-undersocre</title>
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    <script src="../jquery-1.12.3.js"></script>
+    <!-- // <script src="../angular.min.js"></script> -->
+    <script src="../underscore-min.js" type="text/javascript"></script>
+    <script src="js/rem.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div><span class="goback"></span></div>
+        <div class="ipt">
+            <input type="text" placeholder="智能大屏手机.">
+        </div>
+        <span class="more"></span>
+    </div>
+    <div class="menu">
+        <ul class="menu-wp">
+            <li class="active">推荐</li>
+            <li>价格<img src="img/xia.png" alt=""></li>
+            <li>销量</li>
+            <li>评价</li>
+        </ul>
+    </div>
+    <div class="body-wp">
+        <div class="guo"><img src="img/guo.png" alt=""></div>
+        <div class="detail">
+            <p class="paragraph">仅799元乐享原价2000元长城爱乐专业录音棚单曲地ddf...</p>
+            <div class="jiag">
+                <span>￥3952000.00</span>
+                <img class="haiwai" src="img/gou.png" alt="">
+            </div>
+            
+            <p class="ping">199人评论</p>
+            <div>
+                <a class="man">满100减50</a>
+                <a class="baoshui">包税</a>
+                <i></i>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="tplUl"></div> -->
+        <ul class="creatArr">
+        </ul>
+
+    
+    <script id="creatLi" type="text/template">
+            <li>
+               <div class="body-wp">
+                    <div class="guo"><img src="http://localhost/Wserver/User/fileUploading/server/uploadImgs/<%=img%>" alt=""></div>
+                    <div class="detail">
+                        <p class="paragraph"><%=title%></p>
+                        <div class="jiag">
+                            <span>￥<%=price.toFixed(2)%></span>
+                            <img class="haiwai" src="img/gou.png" alt="">
+                        </div>
+                        
+                        <p class="ping"><%=sales%>评论</p>
+                        <div>
+                            <a class="man"><%=coupons%></a>
+                            <a class="baoshui">包税</a>
+                            <i></i>
+                        </div>
+                    </div>
+                </div> 
+            </li>
+    </script>
+    <!-- <div class="body-wp">
+        <div class="guo"><img src="img/bao.png" alt=""></div>
+        <div class="detail">
+            <p><b>电</b>仅799元乐享原价2000元长城爱乐专业录音棚单曲地ddf...</p>
+            <div class="jiag">
+                <span>￥3952000.00</span>
+                <b>掌上专享</b>
+            </div>
+            
+            <p class="ping">199人评论</p>
+            <div>
+                <a class="man">满100减50</a>
+                <a class="baoshui">包税</a>
+                <i></i>
+            </div>
+        </div>
+    </div> -->
+
+    <script src="js/mobile-underscore.js"></script>
+</body>
+</html>

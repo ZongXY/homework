@@ -1,0 +1,476 @@
+/*html, body, ul, ol, li, p{
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+html {
+    font-size: 20px;
+}
+
+.header {
+    height: 43px;
+    background-color: #dc4750;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+}
+
+.ipt {
+    border: 1px solid #ccc;
+    height: 29px;
+    line-height: 29px;
+    width: 222px;
+    border-radius: 5px;
+    margin-right: 19px;
+}
+
+.ipt input {
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    text-indent: 5px;
+    border-radius: 5px;
+}
+
+.goback {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: transparent transparent #fff #fff;
+    transform: rotate(45deg);
+    margin-right: 10px;
+}
+
+
+.more {
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 3px;
+    background-color: #fff;
+    margin: -13px 0 0 10px;
+}
+
+.more:before {
+    display: block;
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-top: 8px;
+}
+
+.more:after {
+    display: block;
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-top: 3px;
+}*/
+
+/*.menu-wp {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    height: 51px;
+}
+
+.menu-wp {
+    overflow: hidden;
+}
+
+.menu-wp li {
+    float: left;
+    width: 25%;
+    border-bottom: 1px solid #c2c2c2;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+}
+
+.menu-wp li.active {
+    border-bottom: 3px solid #c70000;
+    height: 41px;
+}
+
+.menu-wp img {
+    height: 45%;
+    position: relative;
+    top: 5px;
+    left: 5px;
+}
+
+.body-wp {
+    font-size: 14px;
+    height: 125px;
+    margin-top: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.body-wp>div {
+    float: left;
+}
+
+.guo {
+    height: 100px;
+    width: 100px;
+    margin-left: 10px;
+}
+
+.guo img{
+    width: 100%;
+    height: auto;
+
+}
+
+.detail {
+    width: 198px;
+    margin-left: 10px;
+}
+
+.detail span {
+    color: #ef3030;
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.haiwai {
+    height: 15px;
+    width: 48px;
+}
+
+.detail .ping {
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.detail .man {
+    display: inline-block;
+    height: 14px;
+    width: 55px;
+    font-size: 12px;
+    color : #ffb533;
+    border: 1px solid #ffb533;
+    border-radius: 2px;
+    padding: 3px;
+}
+
+.detail .baoshui {
+    height: 14px;
+    width: 30px;
+    font-size: 12px;
+    color: #6699ff;
+    border: 1px solid #6699ff;
+    border-radius: 2px;
+    padding: 3px;
+}
+
+.jiag {
+    margin: 10px 0;
+}
+
+.detail i {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background-color: #999;
+    border-radius: 50%;
+    margin-left: 56px;
+}
+
+.detail i:before {
+    display: block;
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 3px;
+    background-color: #999;
+    margin-left: 8px;
+}
+
+.detail i:after {
+    display: block;
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 3px;
+    background-color: #999;
+    margin-left: 17px;
+    margin-top: -5px;
+}
+
+.jiag b {
+    display: inline-block;
+    background-color: #eb4646;
+    width: 50px;
+    height: 15px;
+    color: #fff;
+    font-size: 10px;
+    padding: 2px;
+}*/
+
+
+
+
+
+
+html {
+    font-size: 20px;
+}
+
+html, body, ul, ol, li, p{
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header {
+    height: 2.15rem;
+    background-color: #dc4750;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+}
+
+.ipt {
+    border: 1px solid #ccc;
+    height: 1.45rem;
+    line-height: 1.45rem;
+    width: 11.1rem;
+    border-radius: 0.25rem;
+    margin-right: 0.95rem;
+}
+
+.ipt input {
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    font-size: 0.75rem;
+    text-indent: 0.25rem;
+    border-radius: 0.25rem;
+}
+
+.goback {
+    display: block;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-color: transparent transparent #fff #fff;
+    transform: rotate(45deg);
+    margin-right: 0.5rem;
+}
+
+
+.more {
+    display: block;
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 0.15rem;
+    background-color: #fff;
+    margin: -0.65rem 0 0 0.5rem;
+}
+
+.more:before {
+    display: block;
+    content: '';
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-top: 0.4rem;
+}
+
+.more:after {
+    display: block;
+    content: '';
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-top: 0.15rem;
+}
+
+/*.menu-wp {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    height: 51px;
+}*/
+
+.menu-wp {
+    overflow: hidden;
+}
+
+.menu-wp li {
+    float: left;
+    width: 25%;
+    border-bottom: 1px solid #c2c2c2;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    text-align: center;
+}
+
+.menu-wp li.active {
+    border-bottom: 0.15rem solid #c70000;
+    height: 2.05rem;
+}
+
+.menu-wp img {
+    height: 45%;
+    position: relative;
+    top: 0.25rem;
+    left: 0.25rem;
+}
+
+.body-wp {
+    font-size: 0.7rem;
+    height: 6.25rem;
+    margin-top: 0.5rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.body-wp>div {
+    float: left;
+}
+
+.guo {
+    height: 5rem;
+    width: 5rem;
+    margin-left: 0.5rem;
+}
+
+.guo img{
+    width: 100%;
+    height: auto;
+
+}
+
+.detail {
+    width: 9.9rem;
+    margin-left: 0.5rem;
+}
+
+.detail .dian {
+    width: 1rem;
+    float: left;
+}
+
+.detail .jiag span {
+    color: #ef3030;
+    margin: 0.5rem 0;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.haiwai {
+    height: 0.75rem;
+    width: 2.4rem;
+}
+
+.detail .ping {
+    color: #999;
+    margin-bottom: 0.25rem;
+}
+
+.detail .man {
+    display: inline-block;
+    height: 0.7rem;
+    font-size: 0.6rem;
+    color : #ffb533;
+    border: 1px solid #ffb533;
+    border-radius: 0.1rem;
+    padding: 0.15rem;
+}
+
+.detail .baoshui {
+    height: 0.7rem;
+    width: 1.5rem;
+    font-size: 0.6rem;
+    color: #6699ff;
+    border: 1px solid #6699ff;
+    border-radius: 0.1rem;
+    padding: 0.15rem;
+}
+
+.jiag {
+    margin: 0.5rem 0;
+}
+
+.detail i {
+    display: inline-block;
+    width: 0.25rem;
+    height: 0.25rem;
+    background-color: #999;
+    border-radius: 50%;
+    /*margin-right: 10px;*/
+}
+
+.detail i:before {
+    display: block;
+    content: '';
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 0.15rem;
+    background-color: #999;
+    margin-left: 0.4rem;
+}
+
+.detail i:after {
+    display: block;
+    content: '';
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 0.15rem;
+    background-color: #999;
+    margin-left: 0.85rem;
+    margin-top: -0.25rem;
+}
+
+.jiag b {
+    display: inline-block;
+    background-color: #eb4646;
+    width: 2.5rem;
+    height: 0.75rem;
+    color: #fff;
+    font-size: 0.5rem;
+    padding: 0.1rem;
+}
+
+p.paragraph {
+    display: inline;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/*.dian {
+    width: 1.5rem;
+    height: 1.5rem;
+}*/
